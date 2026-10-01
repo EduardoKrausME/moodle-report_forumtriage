@@ -37,8 +37,8 @@ class analysis_parser {
     public static function parse(string $raw, array $prioritybyid): array {
         $raw = trim($raw);
         if (str_starts_with($raw, str_repeat(chr(96), 3))) {
-            $raw = preg_replace('/^```(?:json)?\s*/i', '', $raw) ?? $raw;
-            $raw = preg_replace('/\s*```$/', '', $raw) ?? $raw;
+            $raw = preg_replace('/^\x60{3}(?:json)?\s*/i', '', $raw) ?? $raw;
+            $raw = preg_replace('/\s*\x60{3}$/', '', $raw) ?? $raw;
         }
 
         try {
