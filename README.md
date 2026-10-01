@@ -1,27 +1,12 @@
 # Moodle Forum Triage report
 
-`report_forumtriage` is a teacher-only course report for Moodle 4.5+ that helps a teacher triage forum discussions
+`report_forumtriage` is a teacher-only course report for Moodle that helps a teacher triage forum discussions
 without ranking or scoring students.
 
 The plugin follows a deterministic-first design. Moodle/PHP decides what the current teacher is allowed to see, counts
 visible posts, detects whether a teacher replied, calculates elapsed time and objective priority, and identifies long or
 unanswered threads. AI is used only for semantic interpretation such as detecting a discussion that still appears
 unresolved, summarising a topic, and clustering similar questions.
-
-## Requirements
-
-- Moodle 4.5+
-- `local_ai_bridge >= 2026093001`
-- AI Bridge purpose idnumber: `forumtriage-analysis`
-
-All AI traffic goes exclusively through:
-
-```php
-\local_ai_bridge\api::generate('forumtriage-analysis', $messages);
-```
-
-The plugin contains no provider configuration, API key, model endpoint, or direct OpenAI/Gemini/Claude/Ollama
-integration.
 
 ## Security and forum visibility
 
@@ -85,26 +70,3 @@ The course report provides:
 
 Filters include forum, visible group, activity period, only discussions without a teacher reply, and only recent
 questions. Every result links directly to the Moodle discussion.
-
-## Tests
-
-The PHPUnit suite covers the critical boundaries requested for this first version:
-
-- separate groups do not leak another group's discussion;
-- visible groups remain visible;
-- report capability defaults to teacher-only archetypes;
-- deleted and private/invisible replies are ignored;
-- discussions without replies are detected;
-- visible teacher replies are detected;
-- invalid AI JSON fails closed;
-- invented AI discussion IDs are discarded;
-- deterministic priority does not turn a teacher announcement into an unanswered student question.
-
-## CI and validation
-
-`.github/workflows/ci.yml` runs `moodle-plugin-ci`, PHP lint, PHPUnit, Moodle Code Checker, plugin validation,
-and `EduardoKrausME/moodle-plugin-validate` against Moodle 4.5 and a newer supported branch on PostgreSQL and MariaDB.
-
-## License
-
-GNU GPL v3 or later.
