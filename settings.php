@@ -74,8 +74,6 @@ if ($hassiteconfig) {
         2000,
         PARAM_INT
     ));
-
-    $ADMIN->add('reports', $settings);
 } else {
     $settings = null;
 }
