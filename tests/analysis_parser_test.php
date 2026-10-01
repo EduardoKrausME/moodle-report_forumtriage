@@ -17,7 +17,7 @@
 namespace report_forumtriage;
 
 use advanced_testcase;
-use report_forumtriage\local\service\analysis_parser;
+use report_forumtriage\service\analysis_parser;
 
 /**
  * Tests for structured AI response validation.
@@ -25,7 +25,7 @@ use report_forumtriage\local\service\analysis_parser;
  * @package    report_forumtriage
  * @copyright  2026 Eduardo Kraus
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
- * @covers     \report_forumtriage\local\service\analysis_parser
+ * @covers     \report_forumtriage\service\analysis_parser
  */
 final class analysis_parser_test extends advanced_testcase {
     /**

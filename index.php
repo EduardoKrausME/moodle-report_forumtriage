@@ -26,10 +26,10 @@ require_once(__DIR__ . '/../../config.php');
 require_once($CFG->libdir . '/formslib.php');
 
 use report_forumtriage\form\filter_form;
-use report_forumtriage\local\service\ai_analyser;
-use report_forumtriage\local\service\forum_collector;
-use report_forumtriage\local\service\priority_calculator;
-use report_forumtriage\local\service\report_builder;
+use report_forumtriage\service\ai_analyser;
+use report_forumtriage\service\forum_collector;
+use report_forumtriage\service\priority_calculator;
+use report_forumtriage\service\report_builder;
 
 $courseid = required_param('course', PARAM_INT);
 $course = get_course($courseid);

@@ -17,8 +17,8 @@
 namespace report_forumtriage;
 
 use advanced_testcase;
-use report_forumtriage\local\service\forum_collector;
-use report_forumtriage\local\service\priority_calculator;
+use report_forumtriage\service\forum_collector;
+use report_forumtriage\service\priority_calculator;
 use stdClass;
 
 /**
@@ -27,7 +27,7 @@ use stdClass;
  * @package    report_forumtriage
  * @copyright  2026 Eduardo Kraus
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
- * @covers     \report_forumtriage\local\service\forum_collector
+ * @covers     \report_forumtriage\service\forum_collector
  */
 final class forum_collector_test extends advanced_testcase {
     /**

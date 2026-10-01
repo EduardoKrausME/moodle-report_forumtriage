@@ -14,7 +14,7 @@
 // You should have received a copy of the GNU General Public License
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
-namespace report_forumtriage\local\service;
+namespace report_forumtriage\service;
 
 /**
  * Build Mustache-ready report data from deterministic facts and validated AI annotations.

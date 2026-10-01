@@ -17,7 +17,7 @@
 namespace report_forumtriage;
 
 use advanced_testcase;
-use report_forumtriage\local\service\priority_calculator;
+use report_forumtriage\service\priority_calculator;
 
 /**
  * Tests deterministic priority rules.
@@ -25,7 +25,7 @@ use report_forumtriage\local\service\priority_calculator;
  * @package    report_forumtriage
  * @copyright  2026 Eduardo Kraus
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
- * @covers     \report_forumtriage\local\service\priority_calculator
+ * @covers     \report_forumtriage\service\priority_calculator
  */
 final class priority_calculator_test extends advanced_testcase {
     /**
