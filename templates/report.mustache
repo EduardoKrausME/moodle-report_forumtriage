@@ -1,0 +1,86 @@
+{{!
+    This file is part of Moodle - https://moodle.org/
+
+    Moodle is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    Moodle is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
+}}
+{{!
+    Forum triage report.
+    @template report_forumtriage/report
+}}
+
+{{^hasthreads}}
+    <div class="alert alert-info">{{#str}}nothreads, report_forumtriage{{/str}}</div>
+{{/hasthreads}}
+
+{{#hasthreads}}
+    <div class="row mb-4">
+        {{#stats}}
+            <div class="col-sm-6 col-lg-3 mb-2">
+                <div class="card h-100">
+                    <div class="card-body py-3">
+                        <div class="h3 mb-1">{{value}}</div>
+                        <div class="text-muted">{{label}}</div>
+                    </div>
+                </div>
+            </div>
+        {{/stats}}
+    </div>
+
+    <h3>{{#str}}needsattention, report_forumtriage{{/str}}</h3>
+    {{^hasattention}}<p class="text-muted">{{#str}}sectionempty, report_forumtriage{{/str}}</p>{{/hasattention}}
+    {{#attention}}
+        {{> report_forumtriage/thread}}
+    {{/attention}}
+
+    <h3 class="mt-4">{{#str}}noresponse, report_forumtriage{{/str}}</h3>
+    {{^hasnoresponse}}<p class="text-muted">{{#str}}sectionempty, report_forumtriage{{/str}}</p>{{/hasnoresponse}}
+    {{#noresponse}}
+        {{> report_forumtriage/thread}}
+    {{/noresponse}}
+
+    <h3 class="mt-4">{{#str}}possiblyunresolved, report_forumtriage{{/str}}</h3>
+    {{^ranai}}<p class="text-muted">{{#str}}noaiyet, report_forumtriage{{/str}}</p>{{/ranai}}
+    {{#ranai}}
+        {{^haspossiblyunresolved}}
+            <p class="text-muted">{{#str}}sectionempty, report_forumtriage{{/str}}</p>{{/haspossiblyunresolved}}
+        {{#possiblyunresolved}}
+            {{> report_forumtriage/thread}}
+        {{/possiblyunresolved}}
+    {{/ranai}}
+
+    <h3 class="mt-4">{{#str}}recurringquestions, report_forumtriage{{/str}}</h3>
+    {{^ranai}}<p class="text-muted">{{#str}}noaiyet, report_forumtriage{{/str}}</p>{{/ranai}}
+    {{#ranai}}
+        {{^hasclusters}}<p class="text-muted">{{#str}}noclusters, report_forumtriage{{/str}}</p>{{/hasclusters}}
+        {{#clusters}}
+            <div class="card mb-3">
+                <div class="card-body">
+                    <h4 class="h5">{{topic}}</h4>
+                    {{#summary}}<p>{{summary}}</p>{{/summary}}
+                    <ul class="mb-0">
+                        {{#threads}}
+                            <li><a href="{{url}}">{{subject}}</a> — {{forumname}}</li>
+                        {{/threads}}
+                    </ul>
+                </div>
+            </div>
+        {{/clusters}}
+    {{/ranai}}
+
+    <h3 class="mt-4">{{#str}}mostdiscussed, report_forumtriage{{/str}}</h3>
+    {{^hasmostdiscussed}}<p class="text-muted">{{#str}}sectionempty, report_forumtriage{{/str}}</p>{{/hasmostdiscussed}}
+    {{#mostdiscussed}}
+        {{> report_forumtriage/thread}}
+    {{/mostdiscussed}}
+{{/hasthreads}}
