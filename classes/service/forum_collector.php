@@ -116,7 +116,6 @@ class forum_collector {
         global $CFG, $DB;
 
         require_once($CFG->dirroot . '/mod/forum/lib.php');
-        require_once($CFG->libdir . '/html2textlib.php');
         require_once($CFG->dirroot . '/group/lib.php');
 
         $now = time();
