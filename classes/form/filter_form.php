@@ -18,6 +18,11 @@ namespace report_forumtriage\form;
 
 use moodleform;
 
+defined('MOODLE_INTERNAL') || die;
+
+global $CFG;
+require_once($CFG->libdir . '/formslib.php');
+
 /**
  * Report filter form.
  *
