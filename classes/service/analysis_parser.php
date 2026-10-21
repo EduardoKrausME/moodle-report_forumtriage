@@ -16,7 +16,6 @@
 
 namespace report_forumtriage\service;
 
-use core_text;
 use JsonException;
 
 /**
@@ -135,7 +134,7 @@ class analysis_parser {
         }
         $text = trim(strip_tags((string)$value));
         $text = preg_replace('/\s+/u', ' ', $text) ?? $text;
-        return core_text::substr($text, 0, 2000);
+        return substr($text, 0, 2000);
     }
 
     /**

@@ -17,7 +17,6 @@
 namespace report_forumtriage\service;
 
 use context_module;
-use core_text;
 use course_modinfo;
 use moodle_url;
 use stdClass;
@@ -304,8 +303,8 @@ class forum_collector {
         $text = html_to_text($html, 0, false);
         $text = preg_replace('/\s+/u', ' ', $text) ?? $text;
         $text = trim($text);
-        if (core_text::strlen($text) > $maxlength) {
-            $text = core_text::substr($text, 0, $maxlength) . '…';
+        if (strlen($text) > $maxlength) {
+            $text = substr($text, 0, $maxlength) . '…';
         }
         return $text;
     }
@@ -322,7 +321,7 @@ class forum_collector {
         }
         return (bool)preg_match(
             '/\b(como|por que|porque|qual|quais|quando|onde|d[uú]vida|algu[eé]m sabe|how|why|what|when|where)\b/ui',
-            core_text::strtolower($text)
+            strtolower($text)
         );
     }
 }
